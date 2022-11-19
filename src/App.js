@@ -6,7 +6,7 @@ import PostPage from './PostPage';
 import About from './About';
 import Missing from './Missing';
 import Footer from './Footer';
-import { Routes, Route, useHistory } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 
@@ -40,6 +40,14 @@ function App() {
 
   const [search, setSearch] = useState('')
   const [searchResults, setSearchResult] = useState([])
+  const navigate = useNavigate()
+
+  const handleDelete = (id) => {
+    const postsList = posts.filter(post => post.id !== id)
+    setPosts(postsList)
+    navigate('/')
+  }
+
   return (
     <div className="App radial-blue min-h-screen">
       <Header title='Blog' />
@@ -47,7 +55,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Home posts={posts} />} />
         <Route exact path='/post' element={<NewPost />} />
-        <Route exact path='/post/:id' element={<PostPage />} />
+        <Route exact path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete} />} />
         <Route exact path='/about' element={<About />} />
         <Route exact path='*' element={<Missing />} />
       </Routes>
