@@ -4,7 +4,7 @@ import Feed from './Feed'
 
 const Home = ({ posts }) => {
     return (
-        <div className=''>
+        <div className='mb-auto'>
             {posts.length ? (
                 <Feed posts={posts} />
             ) : (
