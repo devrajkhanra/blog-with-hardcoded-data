@@ -10,12 +10,12 @@ const PostPage = ({ posts, handleDelete }) => {
             {post &&
                 < >
                     <div className='flex flex-row justify-center items-center'>
-                        <h2 className='mx-2 font-normal text-xl text-normal'>{post.title}</h2>
+                        <h2 className='mx-2 font-normal text-2xl text-gray-600 pt-2 hover:text-gray-800'>{post.title}</h2>
                         <p className='font-thin text-sm mx-2'>{post.datetime}</p>
                         <button className='text-3xl text-red-800 outline-1 hover:text-red-500 hover:rounded-full hover:bg-red-200' onClick={() => handleDelete(post.id)}><MdDelete /></button>
                     </div>
                     <hr />
-                    <p className='font-normal py-2 text-gray-600'>{post.body}</p>
+                    <p className='font-thin text-xl py-2 text-gray-700 '>{post.body}</p>
                 </>
             }
             {!post &&
